@@ -34,6 +34,7 @@ import {
 	AccessoryWrapper,
 	SelectWrapper,
 } from './styles/custom-gradient-picker-styles';
+import type { CustomGradientPickerProps } from './types';
 
 const GradientAnglePicker = ( { gradientAST, hasGradient, onChange } ) => {
 	const angle =
@@ -110,8 +111,8 @@ export default function CustomGradientPicker( {
 	__nextHasNoMargin = false,
 	value,
 	onChange,
-	__experimentalIsRenderedInSidebar,
-} ) {
+	__experimentalIsRenderedInSidebar = false,
+}: CustomGradientPickerProps ) {
 	const gradientAST = getGradientAstWithDefault( value );
 	// On radial gradients the bar should display a linear gradient.
 	// On radial gradients the bar represents a slice of the gradient from the center until the outside.
