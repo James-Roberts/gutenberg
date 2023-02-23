@@ -1,3 +1,8 @@
+/**
+ * External dependencies
+ */
+import type { GradientNode } from 'gradient-parser';
+
 export function serializeGradientColor( { type, value } ) {
 	if ( type === 'literal' ) {
 		return value;
@@ -30,7 +35,11 @@ export function serializeGradientOrientation( orientation ) {
 	return `${ orientation.value }deg`;
 }
 
-export function serializeGradient( { type, orientation, colorStops } ) {
+export function serializeGradient( {
+	type,
+	orientation,
+	colorStops,
+}: GradientNode ) {
 	const serializedOrientation = serializeGradientOrientation( orientation );
 	const serializedColorStops = colorStops
 		.sort( ( colorStop1, colorStop2 ) => {
