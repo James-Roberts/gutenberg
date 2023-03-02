@@ -175,7 +175,7 @@ export default function CustomGradientPicker( {
 				background={ background }
 				hasGradient={ hasGradient }
 				value={ controlPoints }
-				onChange={ ( newControlPoints: ControlPoint[] ) => {
+				onChange={ ( newControlPoints ) => {
 					onChange(
 						serializeGradient(
 							getGradientAstWithControlPoints(
