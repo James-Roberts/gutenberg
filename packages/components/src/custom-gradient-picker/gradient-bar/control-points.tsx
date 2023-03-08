@@ -123,9 +123,7 @@ function ControlPoints( {
 	onStopControlPointChange,
 	__experimentalIsRenderedInSidebar,
 }: ControlPointsProps ) {
-	const controlPointMoveState: React.MutableRefObject<
-		ControlPointMoveState | undefined
-	> = useRef();
+	const controlPointMoveState = useRef< ControlPointMoveState | undefined >();
 
 	const onMouseMove = ( event: MouseEvent ) => {
 		const relativePosition = getHorizontalRelativeGradientPosition(
@@ -174,9 +172,7 @@ function ControlPoints( {
 	// Adding `cleanEventListeners` to the dependency array below requires the function itself to be wrapped in a `useCallback`
 	// This memoization would prevent the event listeners from being properly cleaned.
 	// Instead, we'll pass a ref to the function in our `useEffect` so `cleanEventListeners` itself is no longer a dependency.
-	const cleanEventListenersRef: React.MutableRefObject<
-		( () => void ) | undefined
-	> = useRef();
+	const cleanEventListenersRef = useRef< ( () => void ) | undefined >();
 	cleanEventListenersRef.current = cleanEventListeners;
 
 	useEffect( () => {
