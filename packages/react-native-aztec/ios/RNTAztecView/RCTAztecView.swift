@@ -101,6 +101,8 @@ class RCTAztecView: Aztec.TextView {
     /// This helps to avoid propagating that unwanted empty string to RN. (Solving #606)
     /// on `textViewDidChange` and `textViewDidChangeSelection`
     private var isInsertingDictationResult = false
+    
+    private var isDictationRecording = false
 
     // MARK: - Font
 
@@ -160,6 +162,7 @@ class RCTAztecView: Aztec.TextView {
         shouldRecalculateTypingAttributesOnDeleteBackward = false
         disableLinkTapRecognizer()
         preBackgroundColor = .clear
+        listenForDictationStart()
     }
 
     func addPlaceholder() {
@@ -355,6 +358,13 @@ class RCTAztecView: Aztec.TextView {
 
     override func dictationRecordingDidEnd() {
         isInsertingDictationResult = true
+        isDictationRecording = false
+    }
+        
+    func listenForDictationStart() {
+        NotificationCenter.default.addObserver(forName: Notification.Name("UIDictationControllerWillStart"), object: nil, queue: nil) { notification in
+            self.isDictationRecording = true
+        }
     }
 
     public override func insertDictationResult(_ dictationResult: [UIDictationPhrase]) {
