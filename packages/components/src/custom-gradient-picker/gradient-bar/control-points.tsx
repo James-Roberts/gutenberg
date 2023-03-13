@@ -41,7 +41,6 @@ import type {
 	ControlPointsProps,
 	InsertPointProps,
 } from '../types';
-import type { DropdownProps } from '../../dropdown/types';
 import type { CustomColorPickerDropdownProps } from '../../color-palette/types';
 
 function ControlPointButton( {
@@ -89,11 +88,12 @@ function GradientColorPickerDropdown( {
 	...props
 }: CustomColorPickerDropdownProps ) {
 	// Open the popover below the gradient control/insertion point
-	const popoverProps: DropdownProps[ 'popoverProps' ] = useMemo(
-		() => ( {
-			placement: 'bottom',
-			offset: 8,
-		} ),
+	const popoverProps = useMemo(
+		() =>
+			( {
+				placement: 'bottom',
+				offset: 8,
+			} as const ),
 		[]
 	);
 
