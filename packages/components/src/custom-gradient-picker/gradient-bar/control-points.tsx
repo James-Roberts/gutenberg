@@ -123,7 +123,7 @@ function ControlPoints( {
 	onStopControlPointChange,
 	__experimentalIsRenderedInSidebar,
 }: ControlPointsProps ) {
-	const controlPointMoveState = useRef< ControlPointMoveState | undefined >();
+	const controlPointMoveState = useRef< ControlPointMoveState >();
 
 	const onMouseMove = ( event: MouseEvent ) => {
 		const relativePosition = getHorizontalRelativeGradientPosition(
