@@ -56,7 +56,7 @@ export function isOverlapping(
 export function addControlPoint(
 	points: ControlPoint[],
 	position: number,
-	color: string
+	color: ControlPoint[ 'color' ]
 ) {
 	const nextIndex = points.findIndex(
 		( point ) => point.position > position
@@ -135,7 +135,7 @@ export function updateControlPointPosition(
 export function updateControlPointColor(
 	points: ControlPoint[],
 	index: number,
-	newColor: string
+	newColor: ControlPoint[ 'color' ]
 ) {
 	const newPoint = {
 		...points[ index ],
@@ -156,7 +156,7 @@ export function updateControlPointColor(
 export function updateControlPointColorByPosition(
 	points: ControlPoint[],
 	position: ControlPoint[ 'position' ],
-	newColor: string
+	newColor: ControlPoint[ 'color' ]
 ) {
 	const index = points.findIndex( ( point ) => point.position === position );
 	return updateControlPointColor( points, index, newColor );
